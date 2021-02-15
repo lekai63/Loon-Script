@@ -1,0 +1,13 @@
+[Rule]
+IP-CIDR,192.168.5.0/24,Frp2Home
+IP-CIDR,192.168.0.0/16,DIRECT
+DOMAIN-SUFFIX,googleusercontent.com,PROXY
+
+
+[Script]
+# 微信打不开的链接会进行跳转，包括抖音淘宝等链接甚至可扫描支付宝二维码
+http-response ^https?:\/\/weixin110\.qq\.com\/cgi-bin\/mmspamsupport-bin\/newredirectconfirmcgi,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/HotKids/Rules/master/Script/weixin110.js
+
+
+[MITM]
+hostname = weixin110.qq.com,as.xiaojukeji.com
