@@ -17,13 +17,12 @@ $.http.get({url: apiUrl})
         let body = response.body;
         let dataStr =   body.slice(body.indexOf("(") +1,body.indexOf(")")) ;
         let data = JSON.parse(dataStr);
-        console.log("data:\n"+data);
         let stock = data[stockCode];    
    
         $.notify(
             `${stock.name}`,
             `${stock.price}`,
-            `${stock.arrow}${abs(stock.percent)} update:${stock.update.slice(11,19)}`
+            `${stock.arrow}${abs(stock.percent)}%  TIME:${stock.update.slice(11,19)}`
         );
     })
     .then(() => $.done());
@@ -34,7 +33,7 @@ function isSZSE(code) {
 } 
 
 function abs(x) {
-    return x>0 ? x : -x;
+    return x>0 ? 100*x : -x*100;
 }
 
 // prettier-ignore
