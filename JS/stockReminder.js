@@ -1,5 +1,5 @@
 // function getCurrentPrice(stockCode) {
-const stockNumber = "sh600109";
+const stockCode = "sh600109";
 
    var url = "http://hq.sinajs.cn/list="+ stockCode;
    $httpClient.get(url,function(error,response,data)
