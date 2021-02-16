@@ -1,10 +1,13 @@
-function getCurrentPrice(stockCode) {
+// function getCurrentPrice(stockCode) {
+const stockNumber = "sh600109";
+
    var url = "http://hq.sinajs.cn/list="+ stockCode;
    $httpClient.get(url,function(error,response,data)
    {
        var StatusCode,ResponseHeaders;
        StatusCode = response.status;
        ResponseHeaders = response.headers;
+       console.log("url:\n"+url);
        console.log("response:\n"+response);
        console.log("StatusCode:\n"+StatusCode);//400
        console.log("ResponseHeaders:\n"+ResponseHeaders);//Object
@@ -22,10 +25,10 @@ function getCurrentPrice(stockCode) {
       $notification.post(Title,SubTitle,Content);
 
    })
-}
+// }
 
-const stockNumber = "sh600109";
-getCurrentPrice(stockNumber);
+
+// getCurrentPrice(stockNumber);
 
 /* function Notify_Demo(Title,SubTitle,Content)
 {
