@@ -10,7 +10,7 @@ function getCurrentPrice(stockCode) {
        console.log("ResponseHeaders:\n",ResponseHeaders);//Object
        console.log("error:\n",error);
        console.log("data:\n",data);
-       console.log("dataparse:\n",Json.parse(data));//if data is Json String
+       // console.log("dataparse:\n",Json.parse(data));//if data is Json String
        //Loon支持使用Console.log输出调试信息
       var parts = data.split("\"");
       var elements = parts[1].split(",");
