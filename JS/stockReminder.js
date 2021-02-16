@@ -13,7 +13,7 @@ function getCurrentPrice(stockCode) {
        // console.log("dataparse:\n",Json.parse(data));//if data is Json String
        //Loon支持使用Console.log输出调试信息
       var parts = data.split('\"');
-      var elements = parts[1].split(",");
+      var elements = (parts[1]).split(",");
       var Title = elements[0]; // 证券名称
       var SubTitle = "当前价"+elements[3]; // 当前价格
       var Content = "买一"+elements[6]+"\n"+"时间"+elements[31]
