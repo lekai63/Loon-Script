@@ -22,8 +22,8 @@ $.http.get({url: apiUrl})
    
         $.notify(
             `${stock.name}`,
-            `当前：${stock.price}`,
-            `买一：${stock.bid1}\n 时间:${stock.update}`
+            `${stock.price}`,
+            `${stock.arrow}${abs(stock.percent)} update:${stock.update.slice(11,19)}`
         );
     })
     .then(() => $.done());
