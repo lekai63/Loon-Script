@@ -8,13 +8,14 @@ let stockCodeList = ["600109","600012","600674","600886"];
 // 因新浪、腾讯的股票接口编码非UTF原因，使用网易接口
 let apiUrl = "http://api.money.126.net/data/feed/";
 let stockList = [];
-let codeUrl ="";
-for ( stockCode in stockCodeList) {
+// let codeUrl ="";
+for ( x in stockCodeList) {
+    let stockCode = stockCodeList[x];
     stockCode = isSZSE(stockCode) + stockCode;
-    codeUrl = codeUrl + stockCode + ","
+    apiUrl = apiUrl + stockCode + ","
     stockList.push(stockCode)
 }
-apiUrl =  apiUrl + codeUrl
+// apiUrl =  apiUrl + codeUrl
 
 console.log("apiUrl:"+apiUrl);
 
@@ -26,7 +27,8 @@ $.http.get({url: apiUrl})
         let dataStr =   body.slice(body.indexOf("(") +1,body.indexOf(")")) ;
         let data = JSON.parse(dataStr);
         let contentList = [];
-        for (stockCode in stockList) {
+        for (x in stockList) {
+            let stockCode = stockList[x];
             let stock = data[stockCode]
             contentList.push(display(stock)) 
         }
