@@ -3,11 +3,17 @@
  * @author: lekai63@gmail.com
  */
 
-// 在此处配置股票代码，个人只需关注重仓股，故只做一个
-var stockCode = "600109";
-stockCode = isSZSE(stockCode) + stockCode;
+// 在此处配置股票代码
+var stockCodeList = ["600109","600012","600674","600886"];
 // 因新浪、腾讯的股票接口编码非UTF原因，使用网易接口
-var apiUrl = "http://api.money.126.net/data/feed/"+ stockCode;
+var apiUrl = "http://api.money.126.net/data/feed/";
+var stockList = [];
+for ( stockCode in stockCodeList) {
+    stockCode = isSZSE(stockCode) + stockCode;
+    apiUrl = apiUrl + stockCode + ","
+    stockList.push(stockCode)
+}
+
 console.log("apiUrl:"+apiUrl);
 
 const $ = API("stockReminder");
@@ -17,12 +23,21 @@ $.http.get({url: apiUrl})
         let body = response.body;
         let dataStr =   body.slice(body.indexOf("(") +1,body.indexOf(")")) ;
         let data = JSON.parse(dataStr);
-        let stock = data[stockCode];    
-   
+        let contentList = [];
+        for (stockCode in stockList) {
+            let stock = data[stockCode]
+            contentList.push(display(stock)) 
+        }
+ 
+        let contents = ""
+        for (var x =2; x< contentList.length;x++) {
+            contents = contents + " | " +contentList[x]
+        }
+
         $.notify(
-            `${stock.name}`,
-            `${stock.price}`,
-            `${stock.arrow}${abs(stock.percent)}%  TIME:${stock.update.slice(11,19)}`
+            `${contentList[0]}`,
+            `${contentList[1]}`,
+            `${contents}`
         );
     })
     .then(() => $.done());
@@ -32,8 +47,13 @@ function isSZSE(code) {
     return (startNum == "6") ? "0" : "1" ;
 } 
 
-function abs(x) {
-    return x>0 ? 100*x : -x*100;
+function numConvert(x) {
+    let res = x>0 ? 100*x : -x*100;
+    return res.toFixed(2)+"%";
+}
+
+function display(item) {
+    return item.name.slice(0,2) + item.price + " "+item.arrow+ numConvert(item.percent) 
 }
 
 // prettier-ignore
