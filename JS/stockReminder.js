@@ -4,15 +4,17 @@
  */
 
 // 在此处配置股票代码
-var stockCodeList = ["600109","600012","600674","600886"];
+let stockCodeList = ["600109","600012","600674","600886"];
 // 因新浪、腾讯的股票接口编码非UTF原因，使用网易接口
-var apiUrl = "http://api.money.126.net/data/feed/";
-var stockList = [];
+let apiUrl = "http://api.money.126.net/data/feed/";
+let stockList = [];
+let codeUrl ="";
 for ( stockCode in stockCodeList) {
     stockCode = isSZSE(stockCode) + stockCode;
-    apiUrl = apiUrl + stockCode + ","
+    codeUrl = codeUrl + stockCode + ","
     stockList.push(stockCode)
 }
+apiUrl =  apiUrl + codeUrl
 
 console.log("apiUrl:"+apiUrl);
 
