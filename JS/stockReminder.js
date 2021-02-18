@@ -35,7 +35,7 @@ $.http.get({url: apiUrl})
  
         let contents = ""
         for (var x =2; x< contentList.length;x++) {
-            contents = contents + " | " +contentList[x]
+            contents = contentList[x] + " | " +contents
         }
 
         $.notify(
