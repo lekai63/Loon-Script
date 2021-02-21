@@ -19,20 +19,20 @@ if (conf.ssid == "5") {
   
     $.http.get({url: "http://myip.ipip.net/"})
     .then((response) => {
-        let bodySlice = response.body.slice(-2);
+        let bodySlice = response.body.slice(-4);
         console.log("get body slice:\n"+bodySlice );
         switch (bodySlice) {
-           case "动":
+           case "移动":
             $config.setSelectPolicy("节点选择","移动节点");
             break
-           case "信":
+           case "电信":
             $config.setSelectPolicy("节点选择","电信节点")
             break
-           case "通":
+           case "联通":
             $config.setSelectPolicy("节点选择","联通节点")
             break
            default:
-            $config.setSelectPolicy("节点选择","联通节点")
+            $config.setSelectPolicy("节点选择","移动节点")
         }
         $.notify(
             `节点变更为:${bodySlice}`,
