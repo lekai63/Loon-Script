@@ -19,9 +19,9 @@ if (conf.ssid == "5") {
   
     $.http.get({url: "http://myip.ipip.net/"})
     .then((response) => {
-        let bodySlice = response.body.slice(-2);
+        let bodySlice = response.body.slice(-4);
         console.log("get body slice:\n"+bodySlice );
-        switch (body.slice(-2)) {
+        switch (bodySlice) {
            case "移动":
             $config.setSelectPolicy("节点选择","移动节点");
             break
