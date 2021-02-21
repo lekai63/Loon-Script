@@ -19,7 +19,7 @@ if (conf.ssid == "5") {
   
     $.http.get({url: "http://myip.ipip.net/"})
     .then((response) => {
-        let bodySlice = response.body.slice(-4);
+        let bodySlice = response.body.substring(response.body.length-4);
         console.log("get body slice:\n"+bodySlice );
         switch (bodySlice) {
            case "移动":
