@@ -19,29 +19,27 @@ if (conf.ssid == "5") {
     
     setTimeout( $.http.get({url: "http://myip.ipip.net/"})
     .then((response) => {
-        let bodySlice = response.body.substring(response.body.length-2,response.body.length-1);
-        let udata = toUnicodeFun(bodySlice);
-        console.log("get body slice's unicode:"+udata );
+        let bodySlice = response.body.substring(response.body.length-3,response.body.length-1);
+        // let udata = toUnicodeFun(bodySlice);
+        // console.log("get body slice's unicode:"+udata );
         switch (udata) {
-           case toUnicodeFun("动"):
+           case "移动":
             $config.setSelectPolicy("节点选择","移动节点");
             break;
-           case toUnicodeFun("信"):
+           case "电信":
             $config.setSelectPolicy("节点选择","电信节点")
             break;
-           case toUnicodeFun("通"):
+           case "联通":
             $config.setSelectPolicy("节点选择","联通节点")
             break;
            default:
             $config.setSelectPolicy("节点选择","移动节点")
         }
 
-       let subPolicys = $config.getSubPolicys("移动节点")
-       console.log("subPolicys:"+subPolicys);
         $.notify(
-            `节点变更为:`,
+            `节点变更为:${bodySlice}节点`,
             `本机原始ip信息：`,
-            `${response.body}`
+            `${response.body.replace("来自于：中国 浙江 ","")}`
         );
     })  ,3000)
    
@@ -58,19 +56,6 @@ function toUnicodeFun(data){
      return str;
   }
    
-
-
-//一次性同时设置多个策略组的策略
-// $config.setSelectPolicy(["国外网站","广告拦截","谷歌服务"],["HK Node 1","REJECT","节点选择"])
-
-//获取相关策略的子策略，json格式
-// var subPolicys = $config.getSubPolicys("节点选项")
-// console.log(subPolicys);
-
-
-
-
-
 
 // prettier-ignore
 /*********************************** API *************************************/
