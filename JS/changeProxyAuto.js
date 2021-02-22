@@ -20,17 +20,18 @@ if (conf.ssid == "5") {
     $.http.get({url: "http://myip.ipip.net/"})
     .then((response) => {
         let bodySlice = response.body.substring(response.body.length-2);
-        console.log("get body slice:\n"+bodySlice );
-        switch (bodySlice) {
-           case "动":
+        let udata = toUnicodeFun(bodySlice);
+        console.log("get body slice's unicode:"+udata );
+        switch (udata) {
+           case toUnicodeFun("动"):
             $config.setSelectPolicy("节点选择","移动节点");
-            break
-           case "信":
+            break;
+           case toUnicodeFun("信"):
             $config.setSelectPolicy("节点选择","电信节点")
-            break
-           case "通":
+            break;
+           case toUnicodeFun("通"):
             $config.setSelectPolicy("节点选择","联通节点")
-            break
+            break;
            default:
             $config.setSelectPolicy("节点选择","移动节点")
         }
@@ -45,7 +46,14 @@ if (conf.ssid == "5") {
 
 
 
-
+function toUnicodeFun(data){
+    if(data == '' || typeof data == 'undefined') return '请输入汉字';
+     var str =''; 
+     for(var i=0;i<data.length;i++){
+        str+="\\u"+data.charCodeAt(i).toString(16);
+     }
+     return str;
+  }
    
 
 
