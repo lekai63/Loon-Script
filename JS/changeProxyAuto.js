@@ -39,7 +39,7 @@ console.log($config.getSubPolicys);
      //   let subPolicys = $config.getSubPolicys("节点选择")
       //  console.log("subPolicys:"+subPolicys);
         $.notify(
-            `节点变更为:${subPolicys}`,
+            `节点变更为:`,
             `本机原始ip信息：`,
             `${response.body}`
         );
