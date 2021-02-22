@@ -35,9 +35,9 @@ if (conf.ssid == "5") {
            default:
             $config.setSelectPolicy("节点选择","移动节点")
         }
-console.log($config);
-     //   let subPolicys = $config.getSubPolicys("节点选择")
-      //  console.log("subPolicys:"+subPolicys);
+
+       let subPolicys = $config.getSubPolicys("移动节点")
+       console.log("subPolicys:"+subPolicys);
         $.notify(
             `节点变更为:`,
             `本机原始ip信息：`,
