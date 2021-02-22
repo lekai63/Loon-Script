@@ -52,12 +52,16 @@ function isSZSE(code) {
 } 
 
 function numConvert(x) {
-    let res = x>0 ? 100*x : -x*100;
-    return res.toFixed(2)+"%";
+    if (x>0) {
+        return "📈"+ (x*100).toFixed(2)+"%";
+    } else{
+        return "📉"+(-x*100).toFixed(2)+"%";
+    }
 }
 
+
 function display(item) {
-    return item.name.slice(0,2) + item.price + " "+item.arrow+ numConvert(item.percent) 
+    return item.name.slice(0,2) + item.price + " "+ numConvert(item.percent) 
 }
 
 // prettier-ignore
