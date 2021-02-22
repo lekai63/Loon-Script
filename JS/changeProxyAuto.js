@@ -16,8 +16,8 @@ if (conf.ssid == "5") {
     $config.setRunningModel(0);
 } else {
     $config.setRunningModel(1);
-  
-    $.http.get({url: "http://myip.ipip.net/"})
+    
+    setTimeout( $.http.get({url: "http://myip.ipip.net/"})
     .then((response) => {
         let bodySlice = response.body.substring(response.body.length-2,response.body.length-1);
         let udata = toUnicodeFun(bodySlice);
@@ -43,8 +43,8 @@ if (conf.ssid == "5") {
             `本机原始ip信息：`,
             `${response.body}`
         );
-    })
-    .then(() => $.done());
+    })  ,3000)
+   
 }
 
 
