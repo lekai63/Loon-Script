@@ -22,7 +22,7 @@ if (conf.ssid == "5") {
         let bodySlice = response.body.substring(response.body.length-3,response.body.length-1);
         // let udata = toUnicodeFun(bodySlice);
         // console.log("get body slice's unicode:"+udata );
-        switch (udata) {
+        switch (bodySlice) {
            case "移动":
             $config.setSelectPolicy("节点选择","移动节点");
             break;
@@ -47,14 +47,14 @@ if (conf.ssid == "5") {
 
 
 
-function toUnicodeFun(data){
+/* function toUnicodeFun(data){
     if(data == '' || typeof data == 'undefined') return '请输入汉字';
      var str =''; 
      for(var i=0;i<data.length;i++){
         str+="\\u"+data.charCodeAt(i).toString(16);
      }
      return str;
-  }
+  } */
    
 
 // prettier-ignore
