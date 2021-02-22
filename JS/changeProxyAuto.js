@@ -19,7 +19,7 @@ if (conf.ssid == "5") {
   
     $.http.get({url: "http://myip.ipip.net/"})
     .then((response) => {
-        let bodySlice = response.body.substring(response.body.length-2,response.body.length-2);
+        let bodySlice = response.body.substring(response.body.length-2,response.body.length-1);
         let udata = toUnicodeFun(bodySlice);
         console.log("get body slice's unicode:"+udata );
         switch (udata) {
