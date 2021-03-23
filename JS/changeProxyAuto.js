@@ -4,17 +4,16 @@
  * network-changed script-path=https://raw.githubusercontent.com/lekai63/Loon-Script/master/JS/changeProxyAuto.js
  */
 const $ = API("changeProxyAuto");
-var conf = JSON.parse( $config.getConfig());
+// var conf = JSON.parse( $config.getConfig());
 
-if (conf.ssid == "5") {
+
     /*
     设置全局运行模式
     0:Global Direct
     1:By Rule
     2:Global Proxy
     */
-    $config.setRunningModel(0);
-} else {
+
     $config.setRunningModel(1);
     
     setTimeout( $.http.get({url: "http://myip.ipip.net/"})
@@ -33,7 +32,7 @@ if (conf.ssid == "5") {
             $config.setSelectPolicy("节点选择","联通节点")
             break;
            default:
-            $config.setSelectPolicy("节点选择","移动节点")
+            $config.setSelectPolicy("节点选择","电信节点")  // 默认低倍率节点,节约流量
         }
 
         $.notify(
@@ -43,7 +42,7 @@ if (conf.ssid == "5") {
         );
     })  ,3000)
    
-}
+
 
 
 
