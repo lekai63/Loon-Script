@@ -16,6 +16,15 @@ const $ = API("changeProxyAuto");
 
     $config.setRunningModel(1);
     
+    var conf = JSON.parse($config.getConfig())
+    if (conf.ssid == "5") {
+        $config.setSelectPolicy("节点选择","HomeRouter");
+        $.notify(
+            `节点变更为:HomeRouter`,
+            ``,
+            ``
+        );
+    } else {
     setTimeout( $.http.get({url: "http://myip.ipip.net/"})
     .then((response) => {
         let bodySlice = response.body.substring(response.body.length-3,response.body.length-1);
@@ -34,6 +43,7 @@ const $ = API("changeProxyAuto");
            default:
             $config.setSelectPolicy("节点选择","电信节点")  // 默认低倍率节点,节约流量
         }
+        
 
         $.notify(
             `节点变更为:${bodySlice}节点`,
@@ -41,6 +51,8 @@ const $ = API("changeProxyAuto");
             `${response.body.replace("来自于：中国 浙江 ","")}`
         );
     })  ,3000)
+}
+
    
 
 
