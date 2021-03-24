@@ -1,0 +1,55 @@
+{
+    "inbounds":[
+        {
+            "listen": "0.0.0.0",
+            "port": 26620,
+            "protocol": "Vmess",
+            "settings": {
+                "clients": [
+                    {
+                        "id": "e677c9b2-ba0e-44e0-927f-56bc288ad4d1",
+                        "level": 0,
+                        "alterId": 4,
+                        "email": "zc@quarkmed.com"
+                    }
+                ],
+                "default": {
+                    "level": 0,
+                    "alterId": 0
+                },
+                "disableInsecureEncryption": false
+            },
+            "streamSettings": {
+                "network": "tcp",
+                "security": "none",
+                "tlsSettings": {},
+                "tcpSettings": {},
+                "kcpSettings": {},
+                "wsSettings": {},
+                "httpSettings": {},
+                "quicSettings": {},
+                "dsSettings": {},
+                "sockopt": {
+                    "mark": 0,
+                    "tcpFastOpen": false,
+                    "tproxy": "off"
+                }
+            },
+    "tag": "natpassin",
+    "sniffing": {
+        "enabled": true,
+        "destOverride": [
+            "http",
+            "tls"
+        ],
+        "metadataOnly": false
+    },
+    "allocate": {
+        "strategy": "always",
+        "refresh": 5,
+        "concurrency": 3
+    }
+
+        }
+    ]
+}
