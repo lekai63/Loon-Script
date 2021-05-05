@@ -1,0 +1,10 @@
+var body = $response.body;
+var obj = JSON.parse(body);
+console.log("before_obj:",obj);
+obj["ProductId"]="1";
+obj["PurchaseDate"]="2021-01-01T01:00:00.000Z";
+obj["ExpireDate"]="2049-01-01T01:00:00.000Z";
+obj["NeverBeenSubscribed"]=false;
+body = JSON.stringify(obj);
+console.log("after_body:",body);
+$done({body});
