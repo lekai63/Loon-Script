@@ -35,13 +35,14 @@ const $ = API("changeProxyAuto");
             $config.setSelectPolicy("节点选择","移动节点");
             break;
            case "电信":
-            $config.setSelectPolicy("节点选择","电信节点")
+            // $config.setSelectPolicy("节点选择","电信节点")
+            $config.setSelectPolicy("节点选择","MyVPS")
             break;
            case "联通":
             $config.setSelectPolicy("节点选择","联通节点")
             break;
            default:
-            $config.setSelectPolicy("节点选择","电信节点")  // 默认低倍率节点,节约流量
+            $config.setSelectPolicy("节点选择","MyVPS")  // 默认低倍率节点,节约流量
         }
         
 
