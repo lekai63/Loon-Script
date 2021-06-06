@@ -51,7 +51,7 @@ const $ = API("changeProxyAuto");
             `本机原始ip信息：`,
             `${response.body.replace("来自于：中国 浙江 ","")}`
         );
-    })  ,3000)
+    })  ,1000)
 }
 
    
